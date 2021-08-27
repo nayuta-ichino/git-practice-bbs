@@ -99,7 +99,7 @@ public class ArticleRepository {
 //		List<Article> articleList = template.query(findAllSql, ARTICLE_ROW_MAPPER);
 
 		// sql文作成
-		String findAllSql = "SELECT" + "	articles.id AS articleId," + "	articles.name AS articleName,"
+		String sql = "SELECT" + "	articles.id AS articleId," + "	articles.name AS articleName,"
 				+ "	articles.content AS articleContent," + "	comments.id AS commentID,"
 				+ "	comments.name AS commentName," + "	comments.content AS commentContent,"
 				+ "	comments.article_id AS commentArticleId" + " FROM" + "	articles" + " LEFT OUTER JOIN"
@@ -107,7 +107,7 @@ public class ArticleRepository {
 				+ "	commentId DESC;";
 
 		// 実行
-		List<Article> articleList = template.query(findAllSql, ARTICLE_RESULT_SET_EXTRACTOR);
+		List<Article> articleList = template.query(sql, ARTICLE_RESULT_SET_EXTRACTOR);
 
 		return articleList;
 	}
